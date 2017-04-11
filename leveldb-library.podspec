@@ -1,6 +1,10 @@
+# CocoaPods 1.x currently does not support libraries with C++ headers. See
+# https://github.com/CocoaPods/CocoaPods/issues/5152. The workaround is to use
+# the 1.2.1.beta.1 with its new option --skip-import-validation.
+
 Pod::Spec.new do |s|
   s.name         =  'leveldb-library'
-  s.version      =  '1.18.2'
+  s.version      =  '1.18.3'
   s.license      =  'New BSD'
   s.summary      =  'A fast key-value storage library '
   s.description  =  'LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.'
@@ -24,6 +28,7 @@ Pod::Spec.new do |s|
     'CC'  => 'clang',
     'CXX' => 'clang++',
     'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/leveldb-library/" "${PODS_ROOT}/leveldb-library/include"',
+    'WARNING_CFLAGS' => '-Wno-shorten-64-to-32',
     'OTHER_LDFLAGS' => '-lc++'
   }
 
