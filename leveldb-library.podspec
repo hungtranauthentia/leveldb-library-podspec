@@ -15,7 +15,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.7'
 
   s.source       =  { 
-    :git => 'https://github.com/matehat/leveldb.git', 
+    :git => 'https://github.com/matehat/leveldb.git',
+    # TODO(wilhuff) Match tag to repo version with :tag => s.version.to_s
     :tag => 'v1.18.1'
   }
 
@@ -28,6 +29,7 @@ Pod::Spec.new do |s|
     'CC'  => 'clang',
     'CXX' => 'clang++',
     'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/leveldb-library/" "${PODS_ROOT}/leveldb-library/include"',
+    # TODO(wilhuff) Fix library warnings and remove WARNING_CFLAGS option
     'WARNING_CFLAGS' => '-Wno-shorten-64-to-32',
     'OTHER_LDFLAGS' => '-lc++'
   }
