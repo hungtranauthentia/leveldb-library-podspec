@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     'CC'  => 'clang',
     'CXX' => 'clang++',
     'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/leveldb-library/" "${PODS_ROOT}/leveldb-library/include"',
-    # TODO(wilhuff) Fix library warnings and remove WARNING_CFLAGS option
+    # TODO(wilhuff) Fix library warnings introduced with Xcode 8.3 and remove WARNING_CFLAGS option
     'WARNING_CFLAGS' => '-Wno-shorten-64-to-32',
     'OTHER_LDFLAGS' => '-lc++'
   }
