@@ -1,7 +1,3 @@
-# CocoaPods 1.x currently does not support libraries with C++ headers. See
-# https://github.com/CocoaPods/CocoaPods/issues/5152. The workaround is to use
-# the 1.2.1.beta.1 with its new option --skip-import-validation.
-
 Pod::Spec.new do |s|
   s.name         =  'leveldb-library'
   s.version      =  '1.18.3'
