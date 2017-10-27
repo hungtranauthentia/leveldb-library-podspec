@@ -3,7 +3,8 @@ Pod::Spec.new do |s|
   s.version      =  '1.20'
   s.license      =  'New BSD'
   s.summary      =  'A fast key-value storage library '
-  s.description  =  'LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.'
+  s.description  =  'LevelDB is a fast key-value storage library written at Google that provides ' +
+                    'an ordered mapping from string keys to string values.'
   s.homepage     =  'https://github.com/google/leveldb'
   s.authors      =  'The LevelDB Authors'
 
@@ -12,29 +13,32 @@ Pod::Spec.new do |s|
 
   s.source       =  { 
     :git => 'https://github.com/google/leveldb.git',
-    :tag => 'v1.20'
+    :tag => 'v' + s.version.to_s
   }
 
   s.requires_arc = false
 
   s.compiler_flags = '-DOS_MACOSX', '-DLEVELDB_PLATFORM_POSIX'
 
-  s.preserve_path = "db", "port", "table", "util"
   s.xcconfig = {
-    'CC'  => 'clang',
-    'CXX' => 'clang++',
-    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/leveldb-library/" "${PODS_ROOT}/leveldb-library/include"',
-    # TODO(wilhuff) Fix library warnings introduced with Xcode 8.3 and remove WARNING_CFLAGS option
-    'WARNING_CFLAGS' => '-Wno-shorten-64-to-32',
-    'OTHER_LDFLAGS' => '-lc++'
+    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/leveldb-library" ' +
+                             '"${PODS_ROOT}/leveldb-library/include"',
+
+    # Disable warnings introduced by Xcode 8.3 and Xcode 9
+    'WARNING_CFLAGS' => '-Wno-shorten-64-to-32 -Wno-comma -Wno-unreachable-code ' +
+                        '-Wno-conditional-uninitialized',
   }
 
   s.header_dir = "leveldb"
   s.source_files = [
-    "db/*.{cc}",
-    "port/*.{cc}",
-    "table/*.{cc}",
-    "util/*.{cc}",
+    "db/*.{cc,h}",
+    "port/*.{cc,h}",
+    "table/*.{cc,h}",
+    "util/*.{cc,h}",
+    "include/leveldb/*.h"
+  ]
+
+  s.public_header_files = [
     "include/leveldb/*.h"
   ]
 
@@ -44,4 +48,6 @@ Pod::Spec.new do |s|
     "db/leveldbutil.cc",
     "port/win"
   ]
+
+  s.library = 'c++'
 end
