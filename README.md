@@ -1,3 +1,8 @@
+> [!WARNING]
+> As of the 1.22.3 release, this repo is no longer being used to
+> release leveldb for CocoaPods. Instead, refer to
+> https://github.com/firebase/leveldb/tree/firebase-release.
+
 # LevelDB Library podspec
 
 This repository provides a podspec to create a CocoaPod for the
