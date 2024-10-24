@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         =  'leveldb-library'
   # When updating the version, be sure to update the `:tag` as well.
-  s.version      =  '1.22.2'
+  s.version      =  '1.23'
   s.license      =  'New BSD'
   s.summary      =  'A fast key-value storage library '
   s.description  =  'LevelDB is a fast key-value storage library written at Google that provides ' +
@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
 
   s.source       =  { 
     :git => 'https://github.com/google/leveldb.git',
-    # Hardcoded to 1.22 since this was a podspec only update.
-    :tag => '1.22'
+    # Hardcoded to 1.3 since this was a podspec only update.
+    :tag => '1.3'
   }
 
   s.requires_arc = false
